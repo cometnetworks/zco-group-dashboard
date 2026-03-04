@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { createClient } from "@/lib/supabase/server"
 import { formatDistanceToNow } from "date-fns"
 
+export const runtime = 'edge'
 export const revalidate = 0
 
 // This page intentionally serves as a placeholder as per PRD

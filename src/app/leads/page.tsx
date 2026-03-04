@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
 
+export const runtime = 'edge'
 export const revalidate = 0
 
 export default async function LeadsPage() {

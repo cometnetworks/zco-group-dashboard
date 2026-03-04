@@ -4,6 +4,7 @@ import { ProjectRadarCard } from "@/components/dashboard/project-radar"
 import { Users, MessageSquareReply, CalendarClock, AlertTriangle, CheckCircle2 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+export const runtime = 'edge'
 export const revalidate = 0
 
 // This would typically come from auth session, hardcoding for MVP
