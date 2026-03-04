@@ -35,7 +35,7 @@ export default async function AgentsPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {agents && agents.length > 0 ? agents.map((agent: any) => {
+                {agents && agents.length > 0 ? agents.map((agent: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                     const latestJob = agent.agent_jobs?.[0]
                     return (
                         <Card key={agent.id} className="bg-card border-border/50 hover:border-border transition-colors group">

@@ -38,7 +38,7 @@ export default async function ContentPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {content && content.length > 0 ? content.map((item: any) => (
+                        {content && content.length > 0 ? content.map((item: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                             <TableRow key={item.id} className="border-border hover:bg-white/5 transition-colors">
                                 <TableCell className="font-medium text-white">{item.title}</TableCell>
                                 <TableCell className="text-muted-foreground">{item.site}</TableCell>

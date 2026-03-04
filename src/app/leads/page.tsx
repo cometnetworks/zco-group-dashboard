@@ -41,7 +41,7 @@ export default async function LeadsPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {leads && leads.length > 0 ? leads.map((lead: any) => {
+                        {leads && leads.length > 0 ? leads.map((lead: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                             const overdue = lead.next_followup_at && new Date(lead.next_followup_at) < new Date()
                             return (
                                 <TableRow key={lead.id} className="border-border hover:bg-white/5 transition-colors">

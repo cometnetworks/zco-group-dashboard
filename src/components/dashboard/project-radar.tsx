@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { formatDistanceToNow } from "date-fns"
-import { FolderKanban, Activity, Users, CalendarCheck } from "lucide-react"
+import { Activity, Users, CalendarCheck } from "lucide-react"
 
 interface ProjectData {
     id: string

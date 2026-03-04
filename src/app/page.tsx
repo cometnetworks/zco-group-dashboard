@@ -14,9 +14,9 @@ export default async function OverviewPage() {
 
   // We handle the edge case where the ORG_ID might not be seeded yet
   // If the database is empty, the RPC will return 0s and empty arrays.
-  const { data, error } = await supabase.rpc('get_overview', { org_id: ORG_ID })
+  const { data } = await supabase.rpc('get_overview', { org_id: ORG_ID })
 
-  const overview = (data as any) || {
+  const overview = (data as any) || { // eslint-disable-line @typescript-eslint/no-explicit-any
     kpis: {
       active_leads_30d: 0,
       replies_30d: 0,
@@ -35,7 +35,7 @@ export default async function OverviewPage() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold tracking-tight text-white">System Overview</h1>
-        <p className="text-muted-foreground">Real-time pulse of your organization's portfolio.</p>
+        <p className="text-muted-foreground">Real-time pulse of your organization&apos;s portfolio.</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -70,7 +70,7 @@ export default async function OverviewPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {overview.radar.length > 0 ? (
-              overview.radar.map((project: any) => (
+              overview.radar.map((project: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                 <ProjectRadarCard key={project.id} project={project} />
               ))
             ) : (
@@ -89,7 +89,7 @@ export default async function OverviewPage() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="divide-y divide-border/50">
-                {overview.actions.overdue_tasks.length > 0 && overview.actions.overdue_tasks.map((task: any) => (
+                {overview.actions.overdue_tasks.length > 0 && overview.actions.overdue_tasks.map((task: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                   <div key={task.id} className="p-4 flex gap-3 hover:bg-white/5 transition-colors cursor-pointer">
                     <AlertTriangle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
                     <div>
@@ -99,7 +99,7 @@ export default async function OverviewPage() {
                   </div>
                 ))}
 
-                {overview.actions.followups_due.length > 0 && overview.actions.followups_due.map((lead: any) => (
+                {overview.actions.followups_due.length > 0 && overview.actions.followups_due.map((lead: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                   <div key={lead.id} className="p-4 flex gap-3 hover:bg-white/5 transition-colors cursor-pointer">
                     <CalendarClock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                     <div>
@@ -109,7 +109,7 @@ export default async function OverviewPage() {
                   </div>
                 ))}
 
-                {overview.actions.idle_projects.length > 0 && overview.actions.idle_projects.map((project: any) => (
+                {overview.actions.idle_projects.length > 0 && overview.actions.idle_projects.map((project: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                   <div key={project.id} className="p-4 flex gap-3 hover:bg-white/5 transition-colors cursor-pointer">
                     <CheckCircle2 className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                     <div>

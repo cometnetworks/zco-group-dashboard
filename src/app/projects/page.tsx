@@ -9,7 +9,7 @@ export default async function ProjectsPage() {
     const supabase = await createClient()
 
     // Note: For MVP we hardcode ORG_ID based on previous setup
-    const ORG_ID = "00000000-0000-0000-0000-000000000000"
+    // const ORG_ID = "00000000-0000-0000-0000-000000000000"
 
     const { data: projects } = await supabase
         .from('project_health')
@@ -45,7 +45,7 @@ export default async function ProjectsPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {projects && projects.length > 0 ? projects.map((project: any) => (
+                        {projects && projects.length > 0 ? projects.map((project: any) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
                             <TableRow key={project.project_id} className="border-border hover:bg-white/5 transition-colors">
                                 <TableCell className="font-medium text-white">{project.name}</TableCell>
                                 <TableCell className="text-muted-foreground">{project.projects?.companies?.name || 'N/A'}</TableCell>

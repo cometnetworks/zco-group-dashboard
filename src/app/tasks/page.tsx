@@ -52,7 +52,7 @@ export default async function TasksPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {tasks && tasks.length > 0 ? tasks.map((task: any) => {
+                        {tasks && tasks.length > 0 ? tasks.map((task: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                             const isOverdue = task.due_date && new Date(task.due_date) < new Date() && task.status !== 'done'
                             return (
                                 <TableRow key={task.id} className="border-border hover:bg-white/5 transition-colors">
