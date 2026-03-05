@@ -14,11 +14,11 @@ const routes = [
     { label: 'Agents', icon: Bot, href: '/agents' },
 ]
 
-export function Sidebar() {
+export function Sidebar({ className }: { className?: string } = {}) {
     const pathname = usePathname()
 
     return (
-        <div className="flex flex-col w-64 h-full bg-card border-r border-border px-4 py-6 text-card-foreground">
+        <div className={cn("flex flex-col w-64 h-full bg-card border-r border-border px-4 py-6 text-card-foreground shrink-0", className)}>
             <div className="flex items-center gap-2 mb-10 px-2">
                 <div className="w-8 h-8 rounded-lg bg-primary shadow-[0_0_15px_rgba(37,99,235,0.5)] flex items-center justify-center">
                     <span className="text-white font-bold text-lg">Z</span>

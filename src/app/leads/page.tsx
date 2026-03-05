@@ -29,50 +29,52 @@ export default async function LeadsPage() {
                 <p className="text-muted-foreground">CRM tracking for active and upcoming deals.</p>
             </div>
 
-            <div className="rounded-md border border-border bg-card">
-                <Table>
-                    <TableHeader>
-                        <TableRow className="border-border hover:bg-transparent">
-                            <TableHead className="text-white font-semibold">Company</TableHead>
-                            <TableHead className="text-white font-semibold">Contact</TableHead>
-                            <TableHead className="text-white font-semibold">Stage</TableHead>
-                            <TableHead className="text-white font-semibold">Score</TableHead>
-                            <TableHead className="text-white font-semibold">Last Contact</TableHead>
-                            <TableHead className="text-white font-semibold text-right">Next Follow-up</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {leads && leads.length > 0 ? leads.map((lead: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
-                            const overdue = lead.next_followup_at && new Date(lead.next_followup_at) < new Date()
-                            return (
-                                <TableRow key={lead.id} className="border-border hover:bg-white/5 transition-colors">
-                                    <TableCell className="font-medium text-white">{lead.companies?.name || 'N/A'}</TableCell>
-                                    <TableCell className="text-muted-foreground">{lead.name}</TableCell>
-                                    <TableCell>
-                                        <Badge variant="outline" className="border-primary/50 text-primary">
-                                            {lead.stage}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell>
-                                        <div className="font-mono text-sm">{lead.score}</div>
-                                    </TableCell>
-                                    <TableCell className="text-muted-foreground text-sm">
-                                        {lead.last_contact_at ? format(new Date(lead.last_contact_at), 'MMM dd, yyyy') : '-'}
-                                    </TableCell>
-                                    <TableCell className={`text-right font-medium text-sm ${overdue ? 'text-destructive' : 'text-primary'}`}>
-                                        {lead.next_followup_at ? format(new Date(lead.next_followup_at), 'MMM dd, yyyy') : '-'}
+            <div className="rounded-md border border-border bg-card overflow-hidden">
+                <div className="overflow-x-auto">
+                    <Table>
+                        <TableHeader>
+                            <TableRow className="border-border hover:bg-transparent">
+                                <TableHead className="text-white font-semibold whitespace-nowrap">Company</TableHead>
+                                <TableHead className="text-white font-semibold whitespace-nowrap">Contact</TableHead>
+                                <TableHead className="text-white font-semibold whitespace-nowrap">Stage</TableHead>
+                                <TableHead className="text-white font-semibold whitespace-nowrap">Score</TableHead>
+                                <TableHead className="text-white font-semibold whitespace-nowrap">Last Contact</TableHead>
+                                <TableHead className="text-white font-semibold text-right whitespace-nowrap">Next Follow-up</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {leads && leads.length > 0 ? leads.map((lead: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
+                                const overdue = lead.next_followup_at && new Date(lead.next_followup_at) < new Date()
+                                return (
+                                    <TableRow key={lead.id} className="border-border hover:bg-white/5 transition-colors">
+                                        <TableCell className="font-medium text-white whitespace-nowrap">{lead.companies?.name || 'N/A'}</TableCell>
+                                        <TableCell className="text-muted-foreground whitespace-nowrap">{lead.name}</TableCell>
+                                        <TableCell className="whitespace-nowrap">
+                                            <Badge variant="outline" className="border-primary/50 text-primary">
+                                                {lead.stage}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="whitespace-nowrap">
+                                            <div className="font-mono text-sm">{lead.score}</div>
+                                        </TableCell>
+                                        <TableCell className="text-muted-foreground text-sm whitespace-nowrap">
+                                            {lead.last_contact_at ? format(new Date(lead.last_contact_at), 'MMM dd, yyyy') : '-'}
+                                        </TableCell>
+                                        <TableCell className={`text-right font-medium text-sm whitespace-nowrap ${overdue ? 'text-destructive' : 'text-primary'}`}>
+                                            {lead.next_followup_at ? format(new Date(lead.next_followup_at), 'MMM dd, yyyy') : '-'}
+                                        </TableCell>
+                                    </TableRow>
+                                )
+                            }) : (
+                                <TableRow>
+                                    <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
+                                        No active leads found.
                                     </TableCell>
                                 </TableRow>
-                            )
-                        }) : (
-                            <TableRow>
-                                <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
-                                    No active leads found.
-                                </TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
+                            )}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
         </div>
     )
